@@ -2,22 +2,30 @@
 #define NODE_H
 
 template <typename T>
-struct Node {
+struct Node
+{
     T data;
-    Node<T>* next;
-    Node<T>* prev;
+    Node<T> *next;
+    Node<T> *prev;
 
-    Node(){ 
-        // TODO
+    Node()
+    {
+        this->data = NULL;
+        this->next = nullptr;
+        this->prev = nullptr;
     }
 
-    Node(T value){
-        // TODO
+    Node(T value)
+    {
+        this->data = value;
+        this->next = nullptr;
+        this->prev = nullptr;
     }
 
-    void killSelf(){
-        // TODO      
-    }    
+    void killSelf()
+    {
+        delete this;
+    }
 };
 
 #endif
