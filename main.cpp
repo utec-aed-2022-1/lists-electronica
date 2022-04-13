@@ -24,7 +24,7 @@ void test(List<int> *list)
     list->push_back(10);
     list->push_front(3);
     ASSERT(list->is_sorted() == false, "The function is_sorted is not working");
-    list->sort();
+    // list->sort();
     ASSERT(list->is_sorted() == true, "The function sort is not working");
     list->clear();
     ASSERT(list->is_empty() == true, "The function clear is not working");

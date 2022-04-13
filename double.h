@@ -23,7 +23,8 @@ public:
 
     ~DoubleList()
     {
-        while(head != nullptr){
+        while (head != nullptr)
+        {
             Node<T> *temp = head;
             head = head->next;
             delete temp;
@@ -137,34 +138,40 @@ public:
 
     void clear()
     {
-        while(head != nullptr){
+        while (head != nullptr)
+        {
             Node<T> *temp = head;
             head = head->next;
             delete temp;
         }
     }
 
-
-
     void sort()
     {
-        if(nodes <= 0){
+        if (nodes <= 0)
+        {
             throw("Array vacío");
         }
-        else if(nodes == 1){
+        else if (nodes == 1)
+        {
             throw("Elemento ordenado");
         }
-        else{
+        else
+        {
             Node<T> *temp = head;
+            Node<T> *temp_a = new Node<T>;
 
             // loop para acceder cada elemento del array
-            for (int step = 0; step < nodes; ++step) {
+            for (int step = 0; step < nodes; ++step)
+            {
                 // loop para comparar elementos del array
-                for (int i = 0; i < nodes - step; ++i) {
+                for (int i = 0; i < nodes - step; ++i)
+                {
                     // comparar 2 elementos adyacentes
-                    if (temp->data > temp->next->data) {
+                    if (temp->data > temp->next->data)
+                    {
                         // swap si los elementos no están en el orden deseado
-                        Node<T> *temp_a = temp;
+                        temp_a = temp;
                         temp = temp->next;
                         temp->next = temp_a;
                     }
@@ -176,14 +183,18 @@ public:
     bool is_sorted()
     {
         // Si el array está vacío o tiene 1 elemento
-        if(nodes <= 1) return true;
+        if (nodes <= 1)
+            return true;
 
         Node<T> *temp = head;
-        while(temp->next != nullptr){
-            if(temp->data < temp->next->data){
+        while (temp->next != nullptr)
+        {
+            if (temp->data < temp->next->data)
+            {
                 temp = temp->next;
             }
-            else{
+            else
+            {
                 return false;
             }
         }
@@ -192,11 +203,12 @@ public:
 
     void reverse()
     {
-        //Inicializar punteros
+        // Inicializar punteros
         Node<T> *current = head;
         Node<T> *prev = nullptr, *next = nullptr;
 
-        while (current != nullptr) {
+        while (current != nullptr)
+        {
             // Almacenar next
             next = current->next;
 
