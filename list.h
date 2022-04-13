@@ -19,11 +19,7 @@ public:
         tail = nullptr;
         nodes = 0;
     }
-    virtual ~List()
-    {
-        // TODO
-        delete this;
-    }
+    virtual ~List() = 0;
 
     // Contrato
     virtual T front() = 0;

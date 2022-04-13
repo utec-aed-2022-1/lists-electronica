@@ -23,17 +23,30 @@ public:
     ~ForwardList()
     {
         // TODO
-        delete this;
+        while(head != nullptr){
+            Node<T> *temp = head;
+            head = head->next;
+            delete temp;
+        }
     }
 
     T front()
     {
-        throw("sin definir");
+        return head->data;
     }
 
     T back()
     {
-        throw("sin definir");
+        if(head == nullptr){
+            throw("Lista Vacía");
+        }
+        else{
+            Node<T> *temp = new Node<T>;
+            while(temp->next != nullptr){
+                temp = temp->next;
+            }
+            return temp->data;
+        }
     }
 
     void push_front(T data)
@@ -119,22 +132,75 @@ public:
 
     void clear()
     {
-        throw("sin definir");
+        while(head != nullptr){
+            Node<T> *temp = head;
+            head = head->next;
+            delete temp;
+        }
     }
 
     void sort()
     {
-        throw("sin definir");
+        if(nodes <= 0){
+            throw("Array vacío");
+        }
+        else if(nodes == 1){
+            throw("Elemento ordenado");
+        }
+        else{
+            Node<T> *temp = head;
+
+            // loop para acceder cada elemento del array
+            for (int step = 0; step < nodes; ++step) {
+                // loop para comparar elementos del array
+                for (int i = 0; i < nodes - step; ++i) {
+                    // comparar 2 elementos adyacentes
+                    if (temp->data > temp->next->data) {
+                        // swap si los elementos no están en el orden deseado
+                        Node<T> *temp_a = temp;
+                        temp = temp->next;
+                        temp->next = temp_a;
+                    }
+                }
+            }
+        }
     }
 
     bool is_sorted()
     {
-        throw("sin definir");
+        // Si el array está vacío o tiene 1 elemento
+        if(nodes <= 1) return true;
+
+        Node<T> *temp = head;
+        while(temp->next != nullptr){
+            if(temp->data < temp->next->data){
+                temp = temp->next;
+            }
+            else{
+                return false;
+            }
+        }
+        return true;
     }
 
     void reverse()
     {
-        throw("sin definir");
+        //Inicializar punteros
+        Node<T> *current = head;
+        Node<T> *prev = nullptr, *next = nullptr;
+
+        while (current != nullptr) {
+            // Almacenar next
+            next = current->next;
+
+            // Invertir el puntero del actual
+            current->next = prev;
+
+            // Mover los punteros hacia adelante
+            prev = current;
+            current = next;
+        }
+        head = prev;
     }
 
     std::string name()
